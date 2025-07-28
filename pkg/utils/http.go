@@ -1,5 +1,3 @@
-// File: pkg/utils/http.go
-
 package utils
 
 import (
@@ -13,7 +11,7 @@ var httpClient = &http.Client{
 	Timeout: 10 * time.Second,
 }
 
-// utility function that performs HTTP GET request to the soecified URL using my own httpClient
+// this is my utility function that performs HTTP GET request to the soecified URL using my own httpClient
 func MakeGETRequest(url string) (*http.Response, error) {
 	req, err := http.NewRequest("GET", url, nil) // creating a new request object.
 	if err != nil {
