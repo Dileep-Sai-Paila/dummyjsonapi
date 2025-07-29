@@ -8,16 +8,20 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 
 	"dummyjsonapi/internal/adaptors/persistence"
+	"dummyjsonapi/internal/config"
 	"dummyjsonapi/internal/interfaces/input/api/rest"
 	"dummyjsonapi/internal/usecase"
 )
 
 func main() {
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		log.Fatalf("Could not load configuration: %v", err)
+	}
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
-	const dummyJsonURL = "https://dummyjson.com"
-	productRepo := persistence.NewProductAPIRepository(dummyJsonURL)
+	productRepo := persistence.NewProductAPIRepository(cfg.DummyJsonURL)
 	productUsecase := usecase.NewProductUsecase(productRepo)
 	productHandler := rest.NewProductHandler(productUsecase)
 

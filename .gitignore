@@ -1,0 +1,6 @@
+# The compiled executable for my OS
+dummyjsonapi
+dummyjsonapi.exe
+
+# The environment file with secrets
+.env
