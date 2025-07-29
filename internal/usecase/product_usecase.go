@@ -63,11 +63,11 @@ func (u *productUsecase) FetchProductsByMultipleCategories(categories []string) 
 			log.Printf("WARN: could not fetch products for category '%s': %v", category, err) // Log the error for the failed category but continue with the others.
 			continue
 		}
-		// Append the found products to our master list.
+		// append the found products to the master list.
 		allProducts = append(allProducts, productList.Products...)
 	}
 
-	// Assemble the final ProductList to return.
+	// assemble the final ProductList to return.
 	finalList := &models.ProductList{
 		Products: allProducts,
 		Total:    len(allProducts),

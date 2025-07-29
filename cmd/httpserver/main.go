@@ -29,7 +29,7 @@ func main() {
 	//  POST handler method.
 	r.Post("/products/by-categories", productHandler.GetByMultipleCategories) //for multiple categories you want to ask
 
-	// --- Start the Server ---
+	// Starting the Server
 	log.Println("All endpoints are live. Server is running on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
